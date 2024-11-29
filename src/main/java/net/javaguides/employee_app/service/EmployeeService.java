@@ -18,6 +18,10 @@ public class EmployeeService {
         return employeeRepository.saveAll(employeeList);
     }
 
+    public List<Employee> updateEmployeeData(List<Employee> employeeList){
+        return employeeRepository.saveAllAndFlush(employeeList);
+    }
+
 
     public Employee getEmployeeByEmpId(Long empId) {
         return employeeRepository.findByEmpId(empId);

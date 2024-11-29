@@ -40,11 +40,16 @@ public class EmployeeController {
         employeeService.deleteAllEmployee();
     }
 
-    @Transactional
     @GetMapping("/getEmployeeByDesignation/{designation}")
     public List<Employee> getEmployeeByDesignation(@PathVariable String designation){
         return employeeService.getEmployeeByDesignation(designation);
     }
+
+    @PutMapping("/updateEmployees")
+    public List<Employee> updateEmployee(@RequestBody List<Employee> employeeList){
+        return employeeService.saveEmployeeData(employeeList);
+    }
+
 
 
 
