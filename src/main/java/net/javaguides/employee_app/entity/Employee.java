@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "T_EMPLOYEE")
 public class Employee {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.TABLE)
     private long empId;
     private String name;
     private Integer age;
