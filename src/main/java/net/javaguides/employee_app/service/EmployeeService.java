@@ -4,6 +4,7 @@ import net.javaguides.employee_app.entity.Employee;
 import net.javaguides.employee_app.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -24,5 +25,17 @@ public class EmployeeService {
 
     public List<Employee> getEmployeeList() {
         return employeeRepository.findAll();
+    }
+
+    public List<Employee> deleteEmployeeByDesignation(String designation) {
+        return employeeRepository.deleteByDesignation(designation);
+    }
+
+    public void deleteAllEmployee() {
+        employeeRepository.deleteAll();
+    }
+
+    public List<Employee> getEmployeeByDesignation(String designation) {
+        return employeeRepository.getByDesignation(designation);
     }
 }

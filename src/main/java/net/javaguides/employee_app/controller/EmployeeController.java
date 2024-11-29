@@ -3,6 +3,7 @@ package net.javaguides.employee_app.controller;
 import net.javaguides.employee_app.entity.Employee;
 import net.javaguides.employee_app.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,5 +28,24 @@ public class EmployeeController {
     public Employee getEmployee(@PathVariable Long empId){
         return employeeService.getEmployeeByEmpId(empId);
     }
+
+    @Transactional
+    @DeleteMapping("/deleteEmployeeByDesignation/{designation}")
+    public List<Employee> deleteEmployeeByDesignation(@PathVariable String designation){
+        return employeeService.deleteEmployeeByDesignation(designation);
+    }
+
+    @DeleteMapping("/deleteAllEmployees")
+    public void deleteAllEmployees(){
+        employeeService.deleteAllEmployee();
+    }
+
+    @Transactional
+    @GetMapping("/getEmployeeByDesignation/{designation}")
+    public List<Employee> getEmployeeByDesignation(@PathVariable String designation){
+        return employeeService.getEmployeeByDesignation(designation);
+    }
+
+
 
 }
