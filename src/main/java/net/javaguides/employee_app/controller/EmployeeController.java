@@ -3,6 +3,7 @@ package net.javaguides.employee_app.controller;
 import net.javaguides.employee_app.entity.Employee;
 import net.javaguides.employee_app.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -50,7 +51,15 @@ public class EmployeeController {
         return employeeService.saveEmployeeData(employeeList);
     }
 
+    @RequestMapping(value = "/getEmployeePagination/{pageNumber}/{pageSize}", method = RequestMethod.GET)
+    public Page<Employee> getEmployeePagination(@PathVariable Integer pageNumber, @PathVariable Integer pageSize) {
+        return employeeService.getEmployeePagination(pageNumber, pageSize, null);
+    }
 
+    @RequestMapping(value = "/getEmployeePagination/{pageNumber}/{pageSize}/{sortProperty}", method = RequestMethod.GET)
+    public Page<Employee> getEmployeePagination(@PathVariable Integer pageNumber, @PathVariable Integer pageSize, @PathVariable String sortProperty) {
+        return employeeService.getEmployeePagination(pageNumber, pageSize, sortProperty);
+    }
 
 
 }
